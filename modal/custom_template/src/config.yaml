@@ -1,0 +1,6 @@
+model_name: model_template
+google_secret_name: google-storage-demos
+
+modal_gpu: 
+cache_path: /tmp/model_cache
+device: "cuda:0"

@@ -6,7 +6,6 @@ import yaml
 from google.cloud import aiplatform, storage
 from google.cloud.aiplatform.compat.types import job_state as gca_job_state
 
-
 class GCPVertexRunner(object):
     def __init__(self, config: dict) -> None:
         self.config = config
@@ -22,17 +21,15 @@ class GCPVertexRunner(object):
         args = []
         if dict_args:
             for append_arg in zip(dict_args.keys(), dict_args.values()):
-                if append_arg[1] != "":
-                    args.append(f"{append_arg[0]}={append_arg[1]}")
-                else:
-                    args.append(f"{append_arg[0]}")
+                args.append(f"{append_arg[0]} {append_arg[1]}")
+
 
         self.job_config[0]["container_spec"]["args"] = args
 
         my_job = aiplatform.CustomJob(
             display_name=run_id,
             worker_pool_specs=self.job_config,
-            labels={"model": "disco-diffusion"},
+            labels={"model": "test"},
         )
 
         job_result = my_job.run(

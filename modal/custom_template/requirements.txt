@@ -1,0 +1,10 @@
+# common
+modal
+typer
+modal-client
+pyyaml
+git+https://github.com/kreativai/roseml.git@v0.2.1
+
+# model specific
+# package1
+# package2
